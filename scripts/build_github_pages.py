@@ -217,6 +217,9 @@ def page_shell(title: str, body: str, description: str, stylesheet: str, script:
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{html.escape(title)}</title>
     <meta name="description" content="{html.escape(description, quote=True)}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{html.escape(stylesheet, quote=True)}">
   </head>
   <body>
@@ -231,9 +234,10 @@ def build_card(entry: DigestEntry, note: SummaryNote | None, *, href_prefix: str
     link = f"{href_prefix}papers/{note.slug}.html" if note else "#"
     tags = note.tags if note else infer_tags(entry.title, entry.summary, entry.insight)
     tag_data = ",".join(tags).lower()
+    card_classes = "paper-card is-preferred" if entry.preferred else "paper-card"
     badge = '<span class="badge badge-accent">Preferred</span>' if entry.preferred else ""
     return f"""
-    <article class="paper-card" data-title="{html.escape(entry.title.lower(), quote=True)}" data-tags="{html.escape(tag_data, quote=True)}" data-preferred="{str(entry.preferred).lower()}">
+    <article class="{card_classes}" data-title="{html.escape(entry.title.lower(), quote=True)}" data-tags="{html.escape(tag_data, quote=True)}" data-preferred="{str(entry.preferred).lower()}">
       <div class="card-top">
         <span class="paper-id">arXiv {html.escape(entry.arxiv_id)}</span>
         {badge}
@@ -260,31 +264,52 @@ def build_index(latest_digest: DailyDigest, notes: list[SummaryNote], note_map: 
         f'<li><a href="./daily/{digest.date_text}.html">{html.escape(digest.date_text)}</a><span>{len(digest.entries)} papers</span></li>'
         for digest in sorted(digests, key=lambda item: item.date_text, reverse=True)
     )
+    preferred_titles = [entry.title for entry in latest_digest.entries if entry.preferred][:4]
+    preferred_list = "".join(f"<li>{html.escape(title)}</li>" for title in preferred_titles)
     body = f"""
     <div class="page-shell">
       <header class="hero">
-        <p class="eyebrow">Paper Reading Log</p>
-        <h1>Daily papers, packaged for reading instead of skimming.</h1>
-        <p class="hero-copy">A lightweight GitHub Pages front-end for Hugging Face Daily Papers notes. The homepage emphasizes your current reading taste: MoE, long-context memory, and diffusion-adjacent generative work.</p>
-        <div class="hero-meta">
-          <span>Latest digest: {html.escape(latest_digest.date_text)}</span>
-          <span>{len(latest_digest.entries)} papers</span>
-          <span>{sum(1 for entry in latest_digest.entries if entry.preferred)} preferred picks</span>
+        <div class="hero-grid">
+          <section class="hero-copy-block">
+            <p class="eyebrow">Paper Reading Log</p>
+            <h1>Daily papers, packaged for reading instead of skimming.</h1>
+            <p class="hero-copy">A lightweight GitHub Pages front-end for Hugging Face Daily Papers notes. The homepage emphasizes your current reading taste: MoE, long-context memory, and diffusion-adjacent generative work.</p>
+            <div class="hero-meta">
+              <span>Latest digest: {html.escape(latest_digest.date_text)}</span>
+              <span>{len(latest_digest.entries)} papers</span>
+              <span>{sum(1 for entry in latest_digest.entries if entry.preferred)} preferred picks</span>
+            </div>
+          </section>
+          <aside class="hero-panel">
+            <p class="eyebrow">Editor Focus</p>
+            <h2>What this front page is optimizing for</h2>
+            <ul class="hero-list">
+              {preferred_list}
+            </ul>
+          </aside>
         </div>
       </header>
 
       <main class="layout">
         <section class="main-column">
-          <div class="section-head">
-            <div>
-              <p class="eyebrow">Latest Digest</p>
-              <h2>{html.escape(latest_digest.title)}</h2>
+          <section class="digest-ribbon">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Latest Digest</p>
+                <h2>{html.escape(latest_digest.title)}</h2>
+              </div>
+              <a class="ghost-link" href="./daily/{html.escape(latest_digest.date_text, quote=True)}.html">Open digest view</a>
             </div>
-            <a class="ghost-link" href="./daily/{html.escape(latest_digest.date_text, quote=True)}.html">Open digest view</a>
-          </div>
-          <ul class="highlight-list">{highlight_items}</ul>
+            <ul class="highlight-list">{highlight_items}</ul>
+          </section>
 
           <section class="filter-panel">
+            <div class="filter-head">
+              <div>
+                <p class="eyebrow">Filter Deck</p>
+                <h3>Search by title or topic</h3>
+              </div>
+            </div>
             <div class="search-row">
               <input id="paper-search" class="search-input" type="search" placeholder="Search title, topic, or idea">
               <button id="preferred-toggle" class="filter-toggle" type="button">Preferred only</button>
@@ -323,16 +348,21 @@ def build_note_page(note: SummaryNote) -> str:
         <a href="../index.html">Home</a>
       </nav>
       <article class="note-page">
-        <p class="eyebrow">Paper Note</p>
-        <h1>{html.escape(note.title)}</h1>
-        <div class="topic-row topic-row-large">{render_tag_pills(note.tags)}</div>
-        <div class="meta-grid">
-          <div><span>arXiv</span><strong>{html.escape(note.arxiv_id)}</strong></div>
-          <div><span>Authors</span><strong>{html.escape(note.authors)}</strong></div>
-          <div><span>Source</span><strong><a href="{html.escape(note.source_url, quote=True)}">Open paper</a></strong></div>
-          <div><span>Local note</span><strong>{html.escape(str(note.source_path.relative_to(ROOT)))}</strong></div>
+        <div class="note-hero">
+          <div class="note-main">
+            <p class="eyebrow">Paper Note</p>
+            <h1>{html.escape(note.title)}</h1>
+            <div class="topic-row topic-row-large">{render_tag_pills(note.tags)}</div>
+          </div>
+          <aside class="note-meta-rail">
+            <div class="meta-grid">
+              <div><span>arXiv</span><strong>{html.escape(note.arxiv_id)}</strong></div>
+              <div><span>Source</span><strong><a href="{html.escape(note.source_url, quote=True)}">Open paper</a></strong></div>
+              <div><span>Local note</span><strong>{html.escape(str(note.source_path.relative_to(ROOT)))}</strong></div>
+            </div>
+          </aside>
         </div>
-        <section class="content-block">
+        <section class="content-block content-block-emphasis">
           <h2>摘要总结</h2>
           {render_paragraphs(note.summary)}
         </section>

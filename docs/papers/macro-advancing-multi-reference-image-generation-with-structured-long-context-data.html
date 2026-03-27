@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MACRO: Advancing Multi-Reference Image Generation with Structured Long-Context Data</title>
     <meta name="description" content="这篇文章关注的是多参考图像生成在参考图一多起来就明显退化的问题。作者认为主要瓶颈不是模型本身，而是数据分布太偏向单参考或少参考场景，因此提出 `MACRO` 数据集，包含 400K 样本、每个样本最多 10 张参考图，覆盖 Customization、Illustration、Spatial、Temporal 四类任务，并专门为长上下文多参考生成提供监督。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
   </head>
   <body>
@@ -14,16 +17,21 @@
         <a href="../index.html">Home</a>
       </nav>
       <article class="note-page">
-        <p class="eyebrow">Paper Note</p>
-        <h1>MACRO: Advancing Multi-Reference Image Generation with Structured Long-Context Data</h1>
-        <div class="topic-row topic-row-large"><span class="topic-pill" data-tag="Long Context">Long Context</span><span class="topic-pill" data-tag="Multimodal">Multimodal</span><span class="topic-pill" data-tag="Dataset">Dataset</span></div>
-        <div class="meta-grid">
-          <div><span>arXiv</span><strong>2603.25319</strong></div>
-          <div><span>Authors</span><strong>Zhekai Chen, Yuqing Wang, Manyuan Zhang, Xihui Liu</strong></div>
-          <div><span>Source</span><strong><a href="https://www.arxiv.org/src/2603.25319">Open paper</a></strong></div>
-          <div><span>Local note</span><strong>knowledge/summary_macro_advancing_multi_reference_image_generation_with_structured_long_context_data.md</strong></div>
+        <div class="note-hero">
+          <div class="note-main">
+            <p class="eyebrow">Paper Note</p>
+            <h1>MACRO: Advancing Multi-Reference Image Generation with Structured Long-Context Data</h1>
+            <div class="topic-row topic-row-large"><span class="topic-pill" data-tag="Long Context">Long Context</span><span class="topic-pill" data-tag="Multimodal">Multimodal</span><span class="topic-pill" data-tag="Dataset">Dataset</span></div>
+          </div>
+          <aside class="note-meta-rail">
+            <div class="meta-grid">
+              <div><span>arXiv</span><strong>2603.25319</strong></div>
+              <div><span>Source</span><strong><a href="https://www.arxiv.org/src/2603.25319">Open paper</a></strong></div>
+              <div><span>Local note</span><strong>knowledge/summary_macro_advancing_multi_reference_image_generation_with_structured_long_context_data.md</strong></div>
+            </div>
+          </aside>
         </div>
-        <section class="content-block">
+        <section class="content-block content-block-emphasis">
           <h2>摘要总结</h2>
           <p>这篇文章关注的是多参考图像生成在参考图一多起来就明显退化的问题。作者认为主要瓶颈不是模型本身，而是数据分布太偏向单参考或少参考场景，因此提出 <code>MACRO</code> 数据集，包含 400K 样本、每个样本最多 10 张参考图，覆盖 Customization、Illustration、Spatial、Temporal 四类任务，并专门为长上下文多参考生成提供监督。</p>
         </section>

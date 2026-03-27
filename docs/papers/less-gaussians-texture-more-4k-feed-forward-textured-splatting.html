@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Less Gaussians, Texture More: 4K Feed-Forward Textured Splatting</title>
     <meta name="description" content="这篇工作指出 feed-forward 3D Gaussian Splatting 在分辨率升高时会因为 primitive 数量近似平方增长而失去可扩展性，因此 4K 合成几乎不可做。作者提出 `LGTM`，思路是减少 Gaussian 数量，把更多高频细节转移到 texture 表达上，从而突破高分辨率瓶颈。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
   </head>
   <body>
@@ -14,16 +17,21 @@
         <a href="../index.html">Home</a>
       </nav>
       <article class="note-page">
-        <p class="eyebrow">Paper Note</p>
-        <h1>Less Gaussians, Texture More: 4K Feed-Forward Textured Splatting</h1>
-        <div class="topic-row topic-row-large"><span class="topic-pill" data-tag="3D Vision">3D Vision</span></div>
-        <div class="meta-grid">
-          <div><span>arXiv</span><strong>2603.25745</strong></div>
-          <div><span>Authors</span><strong>Yixing Lao, Xuyang Bai, Xiaoyang Wu, Nuoyuan Yan, Zixin Luo, Tian Fang, Jean-Daniel Nahmias, Yanghai Tsin, Shiwei Li, Hengshuang Zhao</strong></div>
-          <div><span>Source</span><strong><a href="https://www.arxiv.org/src/2603.25745">Open paper</a></strong></div>
-          <div><span>Local note</span><strong>knowledge/summary_less_gaussians_texture_more_4k_feed_forward_textured_splatting.md</strong></div>
+        <div class="note-hero">
+          <div class="note-main">
+            <p class="eyebrow">Paper Note</p>
+            <h1>Less Gaussians, Texture More: 4K Feed-Forward Textured Splatting</h1>
+            <div class="topic-row topic-row-large"><span class="topic-pill" data-tag="3D Vision">3D Vision</span></div>
+          </div>
+          <aside class="note-meta-rail">
+            <div class="meta-grid">
+              <div><span>arXiv</span><strong>2603.25745</strong></div>
+              <div><span>Source</span><strong><a href="https://www.arxiv.org/src/2603.25745">Open paper</a></strong></div>
+              <div><span>Local note</span><strong>knowledge/summary_less_gaussians_texture_more_4k_feed_forward_textured_splatting.md</strong></div>
+            </div>
+          </aside>
         </div>
-        <section class="content-block">
+        <section class="content-block content-block-emphasis">
           <h2>摘要总结</h2>
           <p>这篇工作指出 feed-forward 3D Gaussian Splatting 在分辨率升高时会因为 primitive 数量近似平方增长而失去可扩展性，因此 4K 合成几乎不可做。作者提出 <code>LGTM</code>，思路是减少 Gaussian 数量，把更多高频细节转移到 texture 表达上，从而突破高分辨率瓶颈。</p>
         </section>
