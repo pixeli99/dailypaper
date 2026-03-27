@@ -1,12 +1,16 @@
 :root {
-  --bg: #f7f7f5;
+  --bg: #f8f7f4;
   --surface: #ffffff;
-  --surface-muted: #fbfbf9;
-  --line: #e6e6e1;
-  --ink: #1f2328;
-  --muted: #5f6b76;
-  --accent: #2f6feb;
-  --accent-soft: rgba(47, 111, 235, 0.08);
+  --surface-muted: #f4f3f0;
+  --line: #e5e3dd;
+  --ink: #1d1d1b;
+  --ink-body: #37352f;
+  --muted: #787774;
+  --accent: #3451b2;
+  --accent-soft: rgba(52, 81, 178, 0.06);
+
+  --font-ui: "Inter", -apple-system, "PingFang SC", "Noto Sans SC", sans-serif;
+  --font-reading: "Source Serif 4", "Noto Serif SC", Georgia, "Songti SC", serif;
 }
 
 * {
@@ -16,13 +20,16 @@
 html {
   min-height: 100%;
   background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   margin: 0;
   color: var(--ink);
   background: var(--bg);
-  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  font-family: var(--font-ui);
+  font-size: 15px;
   line-height: 1.6;
 }
 
@@ -34,11 +41,15 @@ a {
   display: none !important;
 }
 
+/* ── Shell ── */
+
 .page-shell {
-  width: min(1080px, calc(100% - 32px));
+  width: min(1080px, calc(100% - 40px));
   margin: 0 auto;
-  padding: 24px 0 56px;
+  padding: 32px 0 64px;
 }
+
+/* ── Surface cards ── */
 
 .hero,
 .note-page,
@@ -50,7 +61,7 @@ a {
 .hero-panel {
   background: var(--surface);
   border: 1px solid var(--line);
-  box-shadow: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
 }
 
 .hero,
@@ -61,23 +72,28 @@ a {
 .filter-panel,
 .digest-ribbon,
 .hero-panel {
-  border-radius: 16px;
+  border-radius: 12px;
 }
 
 .hero,
 .digest-head,
 .note-page {
-  padding: 24px;
+  padding: 32px;
 }
+
+/* ── Eyebrow ── */
 
 .eyebrow {
   margin: 0 0 10px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   font-size: 0.7rem;
   color: var(--muted);
   font-weight: 600;
+  font-family: var(--font-ui);
 }
+
+/* ── Flex patterns ── */
 
 .hero-grid,
 .search-row,
@@ -91,11 +107,15 @@ a {
   gap: 12px;
 }
 
+/* ── Hero ── */
+
 .hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(240px, 0.8fr);
-  gap: 16px;
+  gap: 20px;
 }
+
+/* ── Heading typography ── */
 
 .hero h1,
 .digest-head h1,
@@ -107,32 +127,46 @@ a {
 .paper-card h2,
 .content-block h2 {
   margin: 0;
-  font-family: "Source Serif 4", Georgia, serif;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
+  font-family: var(--font-reading);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--ink);
 }
 
 .hero h1 {
-  max-width: 13ch;
-  font-size: clamp(2rem, 4vw, 3rem);
+  max-width: 16ch;
+  font-size: clamp(2rem, 4vw, 2.8rem);
 }
+
+/* ── Body reading text ── */
 
 .hero-copy,
 .summary,
 .insight,
 .content-block p,
 .highlight-list,
+.hero-list {
+  font-family: var(--font-reading);
+  color: var(--ink-body);
+  line-height: 1.8;
+}
+
+.hero-copy {
+  max-width: 58ch;
+  font-size: 1rem;
+  margin-top: 6px;
+}
+
+/* ── Muted elements ── */
+
 .library-list,
 .empty-state,
-.hero-list,
 .meta-grid span {
   color: var(--muted);
 }
 
-.hero-copy {
-  max-width: 62ch;
-  font-size: 0.98rem;
-}
+/* ── Flex rows ── */
 
 .hero-meta,
 .topic-row,
@@ -143,8 +177,10 @@ a {
 }
 
 .hero-meta {
-  margin-top: 16px;
+  margin-top: 20px;
 }
+
+/* ── Pills & badges ── */
 
 .hero-meta span,
 .paper-id,
@@ -155,14 +191,19 @@ a {
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  padding: 6px 10px;
+  padding: 5px 11px;
   border: 1px solid var(--line);
   background: var(--surface-muted);
-  font-size: 0.78rem;
+  font-size: 0.75rem;
+  font-family: var(--font-ui);
+  font-weight: 500;
+  color: var(--muted);
 }
 
+/* ── Hero panel ── */
+
 .hero-panel {
-  padding: 18px;
+  padding: 22px;
   background: var(--surface-muted);
 }
 
@@ -171,19 +212,22 @@ a {
 }
 
 .hero-list {
-  margin: 12px 0 0;
+  margin: 14px 0 0;
   padding-left: 18px;
+  font-size: 0.92rem;
 }
 
 .hero-list li + li {
-  margin-top: 6px;
+  margin-top: 8px;
 }
+
+/* ── Main layout ── */
 
 .layout {
   display: grid;
   grid-template-columns: minmax(0, 1.9fr) minmax(260px, 0.8fr);
-  gap: 18px;
-  margin-top: 18px;
+  gap: 20px;
+  margin-top: 20px;
 }
 
 .main-column {
@@ -193,7 +237,7 @@ a {
 .digest-ribbon,
 .filter-panel,
 .side-panel {
-  padding: 18px;
+  padding: 20px;
 }
 
 .section-head {
@@ -201,32 +245,47 @@ a {
 }
 
 .section-head h2 {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
 }
+
+/* ── Links ── */
 
 .ghost-link,
 .card-link,
 .top-nav a {
   color: var(--accent);
   text-decoration: none;
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 0.88rem;
 }
 
+.ghost-link:hover,
+.card-link:hover,
+.top-nav a:hover {
+  text-decoration: underline;
+}
+
+/* ── Highlight list ── */
+
 .highlight-list {
-  margin: 12px 0 0;
-  padding-left: 18px;
-  font-size: 0.94rem;
+  margin: 14px 0 0;
+  padding-left: 20px;
+  font-size: 0.95rem;
 }
 
 .highlight-list li + li {
-  margin-top: 6px;
+  margin-top: 8px;
 }
 
+/* ── Filter panel ── */
+
 .filter-panel {
-  margin-top: 14px;
+  margin-top: 16px;
 }
 
 .filter-head {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .filter-head h3 {
@@ -240,24 +299,31 @@ a {
 .search-input {
   flex: 1;
   min-width: 0;
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1px solid var(--line);
-  padding: 10px 12px;
+  padding: 10px 14px;
   font: inherit;
+  font-size: 0.92rem;
   color: var(--ink);
   background: #fff;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 .search-input:focus {
-  outline: 2px solid rgba(47, 111, 235, 0.14);
-  outline-offset: 1px;
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
 .topic-pill,
 .filter-toggle {
   cursor: pointer;
   font: inherit;
-  color: inherit;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--muted);
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
 }
 
 .badge-accent,
@@ -265,24 +331,31 @@ a {
 .filter-toggle.is-active {
   background: var(--accent-soft);
   color: var(--accent);
-  border-color: rgba(47, 111, 235, 0.18);
+  border-color: rgba(52, 81, 178, 0.18);
 }
 
 .topic-filter-row {
   margin-top: 12px;
 }
 
+/* ── Card grid ── */
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 14px;
-  margin-top: 16px;
+  gap: 16px;
+  margin-top: 18px;
 }
 
 .paper-card {
   grid-column: span 6;
-  padding: 18px;
+  padding: 22px;
   background: var(--surface);
+  transition: box-shadow 0.2s;
+}
+
+.paper-card:hover {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
 .paper-card.is-preferred:nth-of-type(1) {
@@ -290,21 +363,40 @@ a {
 }
 
 .paper-card h2 {
-  margin: 10px 0 8px;
-  font-size: clamp(1.04rem, 1.4vw, 1.22rem);
+  margin: 12px 0 10px;
+  font-size: clamp(1.08rem, 1.4vw, 1.25rem);
 }
 
 .paper-card h2 a {
   text-decoration: none;
 }
 
+.paper-card h2 a:hover {
+  color: var(--accent);
+}
+
 .summary,
 .insight {
-  font-size: 0.92rem;
+  font-size: 0.95rem;
 }
 
 .summary {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+}
+
+.insight {
+  padding: 14px 16px;
+  background: var(--surface-muted);
+  border-radius: 8px;
+  border-left: 3px solid var(--accent);
+}
+
+.insight strong {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
 }
 
 .topic-row {
@@ -315,20 +407,23 @@ a {
 .note-page code,
 .highlight-list code {
   font-family: "SFMono-Regular", "Menlo", monospace;
-  background: #f1f3f5;
-  border-radius: 6px;
-  padding: 2px 5px;
+  font-size: 0.88em;
+  background: #efeeeb;
+  border-radius: 4px;
+  padding: 2px 6px;
 }
 
 .card-link {
   display: inline-block;
-  margin-top: 8px;
-  font-size: 0.92rem;
+  margin-top: 12px;
+  font-size: 0.88rem;
 }
+
+/* ── Sidebar ── */
 
 .side-column {
   display: grid;
-  gap: 14px;
+  gap: 16px;
 }
 
 .library-list {
@@ -338,42 +433,57 @@ a {
 }
 
 .library-list li {
-  padding: 9px 0;
+  padding: 10px 0;
   border-bottom: 1px solid var(--line);
+  font-size: 0.9rem;
+}
+
+.library-list li a {
+  text-decoration: none;
+  font-family: var(--font-reading);
+  color: var(--ink-body);
+}
+
+.library-list li a:hover {
+  color: var(--accent);
 }
 
 .library-list li span {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   text-align: right;
+  color: var(--muted);
 }
 
 .empty-state {
-  margin-top: 14px;
-  padding: 12px 14px;
-  border-radius: 10px;
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: 8px;
   border: 1px dashed var(--line);
   background: var(--surface-muted);
   font-size: 0.92rem;
 }
 
+/* ── Note page (paper detail) ── */
+
 .note-shell {
-  max-width: 920px;
+  max-width: 860px;
 }
 
 .top-nav {
-  margin-bottom: 12px;
-  font-size: 0.92rem;
+  margin-bottom: 16px;
+  font-size: 0.88rem;
 }
 
 .note-hero {
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) minmax(220px, 0.7fr);
-  gap: 18px;
+  gap: 24px;
   align-items: start;
 }
 
 .note-main h1 {
-  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  line-height: 1.3;
 }
 
 .note-meta-rail .meta-grid {
@@ -388,23 +498,37 @@ a {
 }
 
 .meta-grid div {
-  padding: 12px;
-  border-radius: 10px;
+  padding: 14px;
+  border-radius: 8px;
   border: 1px solid var(--line);
   background: var(--surface-muted);
 }
 
 .meta-grid span {
   display: block;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   margin-bottom: 4px;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
+  font-family: var(--font-ui);
+  font-weight: 600;
 }
 
+.meta-grid strong {
+  font-size: 0.92rem;
+  font-family: var(--font-ui);
+}
+
+.meta-grid strong a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* ── Content blocks ── */
+
 .content-block {
-  margin-top: 22px;
-  padding-top: 18px;
+  margin-top: 28px;
+  padding-top: 24px;
   border-top: 1px solid var(--line);
 }
 
@@ -413,13 +537,16 @@ a {
 }
 
 .content-block h2 {
-  font-size: 1.08rem;
-  margin-bottom: 10px;
+  font-size: 1.15rem;
+  margin-bottom: 12px;
 }
 
 .content-block p {
-  font-size: 0.96rem;
+  font-size: 1rem;
+  line-height: 1.85;
 }
+
+/* ── Responsive ── */
 
 @media (max-width: 980px) {
   .layout,
@@ -436,17 +563,21 @@ a {
 
 @media (max-width: 720px) {
   .page-shell {
-    width: min(100% - 20px, 1080px);
-    padding-top: 18px;
+    width: min(100% - 24px, 1080px);
+    padding-top: 20px;
   }
 
   .hero,
   .digest-head,
   .note-page {
-    padding: 18px;
+    padding: 22px;
   }
 
   .search-row {
     flex-direction: column;
+  }
+
+  .paper-card {
+    padding: 18px;
   }
 }
