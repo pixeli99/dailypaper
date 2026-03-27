@@ -7,173 +7,116 @@
     <meta name="description" content="Daily paper reading digest and note library">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
     
-    <div class="page-shell">
-      <header class="hero">
-        <div class="hero-grid">
-          <section class="hero-copy-block">
-            <p class="eyebrow">Paper Reading Log</p>
-            <h1>Daily papers, packaged for reading instead of skimming.</h1>
-            <p class="hero-copy">A lightweight GitHub Pages front-end for Hugging Face Daily Papers notes. The homepage emphasizes your current reading taste: MoE, long-context memory, and diffusion-adjacent generative work.</p>
-            <div class="hero-meta">
-              <span>Latest digest: 2026-03-27</span>
-              <span>7 papers</span>
-              <span>4 preferred picks</span>
-            </div>
-          </section>
-          <aside class="hero-panel">
-            <p class="eyebrow">Editor Focus</p>
-            <h2>What this front page is optimizing for</h2>
-            <ul class="hero-list">
-              <li>Intern-S1-Pro: Scientific Multimodal Foundation Model at Trillion Scale</li><li>MACRO: Advancing Multi-Reference Image Generation with Structured Long-Context Data</li><li>MSA: Memory Sparse Attention for Efficient End-to-End Memory Model Scaling to 100M Tokens</li><li>Vega: Learning to Drive with Natural Language Instructions</li>
-            </ul>
-          </aside>
-        </div>
+    <div class="container">
+      <header class="site-header">
+        <h1>Paper Reading</h1>
+        <p class="subtitle">2026-03-27 · 7 papers · 4 preferred</p>
       </header>
 
-      <main class="layout">
-        <section class="main-column">
-          <section class="digest-ribbon">
-            <div class="section-head">
-              <div>
-                <p class="eyebrow">Latest Digest</p>
-                <h2>Hugging Face Daily Papers 2026-03-27</h2>
-              </div>
-              <a class="ghost-link" href="./daily/2026-03-27.html">Open digest view</a>
-            </div>
-            <ul class="highlight-list"><li>更贴近你当前偏好的有 3 篇：<code>Intern-S1-Pro</code>（超大规模 MoE / 科学多模态）、<code>MACRO</code>（多参考图像生成，偏 diffusion 生态）、<code>MSA</code>（超长上下文 memory）。</li>
-<li>今天没有特别直接的 <code>diffusion language model</code> 论文，但 <code>MACRO</code> 和 <code>Vega</code> 都属于“生成模型作为监督或核心模块”的路线，值得跟进。</li></ul>
-          </section>
-
-          <section class="filter-panel">
-            <div class="filter-head">
-              <div>
-                <p class="eyebrow">Filter Deck</p>
-                <h3>Search by title or topic</h3>
-              </div>
-            </div>
-            <div class="search-row">
-              <input id="paper-search" class="search-input" type="search" placeholder="Search title, topic, or idea">
-              <button id="preferred-toggle" class="filter-toggle" type="button">Preferred only</button>
-            </div>
-            <div class="topic-filter-row"><button class="topic-pill" data-tag="3D Vision" type="button">3D Vision</button><button class="topic-pill" data-tag="Agents" type="button">Agents</button><button class="topic-pill" data-tag="Dataset" type="button">Dataset</button><button class="topic-pill" data-tag="Diffusion" type="button">Diffusion</button><button class="topic-pill" data-tag="Long Context" type="button">Long Context</button><button class="topic-pill" data-tag="MoE" type="button">MoE</button><button class="topic-pill" data-tag="Multimodal" type="button">Multimodal</button><button class="topic-pill" data-tag="Robotics" type="button">Robotics</button><button class="topic-pill" data-tag="Speech" type="button">Speech</button></div>
-          </section>
-
-          <div id="paper-grid" class="card-grid">
-            
-    <article class="paper-card is-preferred" data-title="intern-s1-pro: scientific multimodal foundation model at trillion scale" data-tags="moe,multimodal,agents" data-preferred="true">
-      <div class="card-top">
-        <span class="paper-id">arXiv 2603.25040</span>
-        <span class="badge badge-accent">Preferred</span>
+      <div class="search-bar">
+        <input id="paper-search" type="search" placeholder="Search papers...">
+        <button id="preferred-toggle" class="filter-toggle" type="button">Preferred</button>
       </div>
-      <div class="topic-row"><span class="topic-pill" data-tag="MoE">MoE</span><span class="topic-pill" data-tag="Multimodal">Multimodal</span><span class="topic-pill" data-tag="Agents">Agents</span></div>
+      <div class="topic-filter-row"><button class="topic-pill" data-tag="3D Vision" type="button">3D Vision</button><button class="topic-pill" data-tag="Agents" type="button">Agents</button><button class="topic-pill" data-tag="Dataset" type="button">Dataset</button><button class="topic-pill" data-tag="Diffusion" type="button">Diffusion</button><button class="topic-pill" data-tag="Long Context" type="button">Long Context</button><button class="topic-pill" data-tag="MoE" type="button">MoE</button><button class="topic-pill" data-tag="Multimodal" type="button">Multimodal</button><button class="topic-pill" data-tag="Robotics" type="button">Robotics</button><button class="topic-pill" data-tag="Speech" type="button">Speech</button></div>
+
+      <main id="paper-grid">
+        
+    <article class="paper-card" data-title="intern-s1-pro: scientific multimodal foundation model at trillion scale" data-tags="moe,multimodal,agents" data-preferred="true">
+      <div class="paper-head">
+        <span class="paper-meta">arXiv 2603.25040 · MoE · Multimodal · Agents</span>
+        <span class="preferred-mark">Preferred</span>
+      </div>
       <h2><a href="./papers/intern-s1-pro-scientific-multimodal-foundation-model-at-trillion-scale.html">Intern-S1-Pro: Scientific Multimodal Foundation Model at Trillion Scale</a></h2>
       <p class="summary">这是一篇 1T 参数科学多模态基础模型报告，目标是把通用多模态能力和科学专用能力合到同一个系统里。论文不只是做参数堆叠，还强调通过 expert expansion 和 grouped routing 把超大规模 MoE 训练做稳，并配合 6T token 的科学多模态续训数据来提升 chemistry、materials、life science、earth science 等垂类能力。</p>
       <p class="insight"><strong>Insight.</strong> 这篇最值得看的点不是“又一个更大的模型”，而是它把“Specializable Generalist”讲得很明确，即先保住通用模型能力，再用架构和数据把科学专长做深。如果你关心 MoE，这篇值得跟，因为 grouped routing + expert expansion 是它能上到 trillion scale 的关键工程点。</p>
-      <a class="card-link" href="./papers/intern-s1-pro-scientific-multimodal-foundation-model-at-trillion-scale.html">Read note</a>
     </article>
     
-    <article class="paper-card is-preferred" data-title="macro: advancing multi-reference image generation with structured long-context data" data-tags="long context,multimodal,dataset" data-preferred="true">
-      <div class="card-top">
-        <span class="paper-id">arXiv 2603.25319</span>
-        <span class="badge badge-accent">Preferred</span>
+    <article class="paper-card" data-title="macro: advancing multi-reference image generation with structured long-context data" data-tags="long context,multimodal,dataset" data-preferred="true">
+      <div class="paper-head">
+        <span class="paper-meta">arXiv 2603.25319 · Long Context · Multimodal · Dataset</span>
+        <span class="preferred-mark">Preferred</span>
       </div>
-      <div class="topic-row"><span class="topic-pill" data-tag="Long Context">Long Context</span><span class="topic-pill" data-tag="Multimodal">Multimodal</span><span class="topic-pill" data-tag="Dataset">Dataset</span></div>
       <h2><a href="./papers/macro-advancing-multi-reference-image-generation-with-structured-long-context-data.html">MACRO: Advancing Multi-Reference Image Generation with Structured Long-Context Data</a></h2>
       <p class="summary">这篇论文认为多参考图像生成长期做不好的主要原因不是模型不会“想”，而是训练数据缺少真正的长上下文多参考监督。作者构建了 <code>MACRO</code> 数据集，含 400K 样本、每个样本最多 10 张参考图，覆盖 Customization、Illustration、Spatial、Temporal 四类任务；同时给出 4K 样本的 <code>MacroBench</code> 来评估不同参考数和任务维度下的生成一致性。</p>
       <p class="insight"><strong>Insight.</strong> 这篇的信号很强，瓶颈主要在 data，而不只是 architecture。实验里，用 <code>MACRO</code> 微调后的 Bagel 在多参考生成上明显提升，平均分做到 5.71，开源里只输闭源的 Nano Banana Pro 和 GPT-Image-1.5，而且在 Spatial 上甚至能超过 Nano Banana Pro；另外 “think-before-generation” 和 collage proxy 这两种直觉型技巧都不如直接补高质量多参考数据有效。</p>
-      <a class="card-link" href="./papers/macro-advancing-multi-reference-image-generation-with-structured-long-context-data.html">Read note</a>
     </article>
     
     <article class="paper-card" data-title="slopcodebench: benchmarking how coding agents degrade over long-horizon iterative tasks" data-tags="dataset,agents" data-preferred="false">
-      <div class="card-top">
-        <span class="paper-id">arXiv 2603.24755</span>
+      <div class="paper-head">
+        <span class="paper-meta">arXiv 2603.24755 · Dataset · Agents</span>
         
       </div>
-      <div class="topic-row"><span class="topic-pill" data-tag="Dataset">Dataset</span><span class="topic-pill" data-tag="Agents">Agents</span></div>
       <h2><a href="./papers/slopcodebench-benchmarking-how-coding-agents-degrade-over-long-horizon-iterative-tasks.html">SlopCodeBench: Benchmarking How Coding Agents Degrade Over Long-Horizon Iterative Tasks</a></h2>
       <p class="summary">这篇 benchmark 不是测 coding agent 一次性写出能跑代码，而是看它在多轮迭代开发里会不会把代码库越改越“烂”。作者设计了 20 个长程迭代任务，对 11 个模型进行评测，重点考察扩展性退化、代码臃肿和结构侵蚀。</p>
       <p class="insight"><strong>Insight.</strong> 结果很直接，没有任何 agent 能端到端完成所有迭代任务，而且 90% 轨迹里代码会越来越 verbose，80% 会出现结构 erosion。对做 agent evaluation 的人来说，这篇很重要，因为它指出“测试通过”不等于“代码还可维护”。</p>
-      <a class="card-link" href="./papers/slopcodebench-benchmarking-how-coding-agents-degrade-over-long-horizon-iterative-tasks.html">Read note</a>
     </article>
     
-    <article class="paper-card is-preferred" data-title="msa: memory sparse attention for efficient end-to-end memory model scaling to 100m tokens" data-tags="long context,dataset" data-preferred="true">
-      <div class="card-top">
-        <span class="paper-id">arXiv 2603.23516</span>
-        <span class="badge badge-accent">Preferred</span>
+    <article class="paper-card" data-title="msa: memory sparse attention for efficient end-to-end memory model scaling to 100m tokens" data-tags="long context,dataset" data-preferred="true">
+      <div class="paper-head">
+        <span class="paper-meta">arXiv 2603.23516 · Long Context · Dataset</span>
+        <span class="preferred-mark">Preferred</span>
       </div>
-      <div class="topic-row"><span class="topic-pill" data-tag="Long Context">Long Context</span><span class="topic-pill" data-tag="Dataset">Dataset</span></div>
       <h2><a href="./papers/msa-memory-sparse-attention-for-efficient-end-to-end-memory-model-scaling-to-100m-tokens.html">MSA: Memory Sparse Attention for Efficient End-to-End Memory Model Scaling to 100M Tokens</a></h2>
       <p class="summary">这篇工作试图把 memory capacity 和 reasoning 能力解耦，用稀疏注意力、document-wise RoPE、KV cache 压缩和 memory parallel，把 end-to-end memory model 的规模拉到 100M tokens。它在九个 long-context QA benchmark 和 RULER NIAH 上都做了评测。</p>
       <p class="insight"><strong>Insight.</strong> 论文最强的点不是单一指标，而是 scaling 稳定性。作者报告模型从 16K 扩到 100M tokens 只出现约 8.8% 的性能退化，并在 1M-token 的 NIAH 里保持 94.84% 准确率。对长上下文研究来说，这篇比单纯做 window extension 更像是在做“memory operating system”。</p>
-      <a class="card-link" href="./papers/msa-memory-sparse-attention-for-efficient-end-to-end-memory-model-scaling-to-100m-tokens.html">Read note</a>
     </article>
     
     <article class="paper-card" data-title="voxtral tts" data-tags="diffusion,multimodal,speech" data-preferred="false">
-      <div class="card-top">
-        <span class="paper-id">arXiv 2603.25551</span>
+      <div class="paper-head">
+        <span class="paper-meta">arXiv 2603.25551 · Diffusion · Multimodal · Speech</span>
         
       </div>
-      <div class="topic-row"><span class="topic-pill" data-tag="Diffusion">Diffusion</span><span class="topic-pill" data-tag="Multimodal">Multimodal</span><span class="topic-pill" data-tag="Speech">Speech</span></div>
       <h2><a href="./papers/voxtral-tts.html">Voxtral TTS</a></h2>
       <p class="summary">Mistral 这篇 TTS 论文用 hybrid 架构把语义和声学 token 分开处理，语义 token 用 autoregressive 生成，声学 token 用 flow matching 生成，并配套一个自研的 <code>Voxtral Codec</code>。模型只需要 3 秒参考音频就能做零样本 voice cloning。</p>
       <p class="insight"><strong>Insight.</strong> 这篇值得注意的地方是“AR 管语义，FM 管声学”的拆分非常实用，兼顾自然度、表达力和推理延迟。作者的人评里，Voxtral TTS 在多语言 voice cloning 上对 ElevenLabs Flash v2.5 的总体胜率是 68.4%，说明 flow matching 在语音侧已经进入很强的实用区间。</p>
-      <a class="card-link" href="./papers/voxtral-tts.html">Read note</a>
     </article>
     
     <article class="paper-card" data-title="less gaussians, texture more: 4k feed-forward textured splatting" data-tags="3d vision" data-preferred="false">
-      <div class="card-top">
-        <span class="paper-id">arXiv 2603.25745</span>
+      <div class="paper-head">
+        <span class="paper-meta">arXiv 2603.25745 · 3D Vision</span>
         
       </div>
-      <div class="topic-row"><span class="topic-pill" data-tag="3D Vision">3D Vision</span></div>
       <h2><a href="./papers/less-gaussians-texture-more-4k-feed-forward-textured-splatting.html">Less Gaussians, Texture More: 4K Feed-Forward Textured Splatting</a></h2>
       <p class="summary">这篇针对 feed-forward 3D Gaussian Splatting 在高分辨率下 primitive 数量随分辨率平方增长的问题，提出 <code>LGTM</code>，核心思路是少放 Gaussian、多依赖 texture 表达，从而把 4K synthesis 做成可行。</p>
       <p class="insight"><strong>Insight.</strong> 它的主要贡献不是更复杂的渲染器，而是把高分辨率表达从“堆更多点”改成“点负责几何，纹理负责细节”，这是一个更可扩展的 factorization。对高分辨率 3DGS 来说，这是很自然但也很关键的一步。</p>
-      <a class="card-link" href="./papers/less-gaussians-texture-more-4k-feed-forward-textured-splatting.html">Read note</a>
     </article>
     
-    <article class="paper-card is-preferred" data-title="vega: learning to drive with natural language instructions" data-tags="diffusion,multimodal,robotics" data-preferred="true">
-      <div class="card-top">
-        <span class="paper-id">arXiv 2603.25741</span>
-        <span class="badge badge-accent">Preferred</span>
+    <article class="paper-card" data-title="vega: learning to drive with natural language instructions" data-tags="diffusion,multimodal,robotics" data-preferred="true">
+      <div class="paper-head">
+        <span class="paper-meta">arXiv 2603.25741 · Diffusion · Multimodal · Robotics</span>
+        <span class="preferred-mark">Preferred</span>
       </div>
-      <div class="topic-row"><span class="topic-pill" data-tag="Diffusion">Diffusion</span><span class="topic-pill" data-tag="Multimodal">Multimodal</span><span class="topic-pill" data-tag="Robotics">Robotics</span></div>
       <h2><a href="./papers/vega-learning-to-drive-with-natural-language-instructions.html">Vega: Learning to Drive with Natural Language Instructions</a></h2>
       <p class="summary">这篇工作想把自动驾驶从 imitation driving 推到 instruction-based driving。作者先构建了 <code>InstructScene</code>，包含约 100K 条带自然语言驾驶指令的场景和轨迹；再提出 <code>Vega</code>，用 AR 处理视觉和语言，用 diffusion 生成未来图像与动作轨迹，在一个统一的 vision-language-world-action 框架里联合训练。</p>
       <p class="insight"><strong>Insight.</strong> 最重要的点是 future image prediction 在这里不是附加任务，而是 dense supervision，负责把高维视觉语言条件和低维 action 之间的监督信号补足。论文实验显示，直接训 VLA 规划头效果很差，但加上 future frame prediction 后，NAVSIM v2 可做到 86.9 EPDMS，而且 best-of-N 后达到 SOTA。</p>
-      <a class="card-link" href="./papers/vega-learning-to-drive-with-natural-language-instructions.html">Read note</a>
     </article>
     
-          </div>
-          <p id="empty-state" class="empty-state" hidden>No papers match the current filter.</p>
-        </section>
-
-        <aside class="side-column">
-          <section class="side-panel">
-            <p class="eyebrow">Archive</p>
-            <h3>Daily digests</h3>
-            <ul class="library-list"><li><a href="./daily/2026-03-27.html">2026-03-27</a><span>7 papers</span></li></ul>
-          </section>
-          <section class="side-panel">
-            <p class="eyebrow">Library</p>
-            <h3>All notes</h3>
-            <ul class="library-list"><li><a href="./papers/fast-wam-do-world-action-models-need-test-time-future-imagination.html">Fast-WAM: Do World Action Models Need Test-time Future Imagination?</a><span>arXiv 2603.16666</span></li>
-<li><a href="./papers/foundations-of-schr-dinger-bridges-for-generative-modeling.html">Foundations of Schrödinger Bridges for Generative Modeling</a><span>arXiv 2603.18992</span></li>
-<li><a href="./papers/intern-s1-pro-scientific-multimodal-foundation-model-at-trillion-scale.html">Intern-S1-Pro: Scientific Multimodal Foundation Model at Trillion Scale</a><span>arXiv 2603.25040</span></li>
-<li><a href="./papers/less-gaussians-texture-more-4k-feed-forward-textured-splatting.html">Less Gaussians, Texture More: 4K Feed-Forward Textured Splatting</a><span>arXiv 2603.25745</span></li>
-<li><a href="./papers/macro-advancing-multi-reference-image-generation-with-structured-long-context-data.html">MACRO: Advancing Multi-Reference Image Generation with Structured Long-Context Data</a><span>arXiv 2603.25319</span></li>
-<li><a href="./papers/msa-memory-sparse-attention-for-efficient-end-to-end-memory-model-scaling-to-100m-tokens.html">MSA: Memory Sparse Attention for Efficient End-to-End Memory Model Scaling to 100M Tokens</a><span>arXiv 2603.23516</span></li>
-<li><a href="./papers/slopcodebench-benchmarking-how-coding-agents-degrade-over-long-horizon-iterative-tasks.html">SlopCodeBench: Benchmarking How Coding Agents Degrade Over Long-Horizon Iterative Tasks</a><span>arXiv 2603.24755</span></li>
-<li><a href="./papers/vega-learning-to-drive-with-natural-language-instructions.html">Vega: Learning to Drive with Natural Language Instructions</a><span>arXiv 2603.25741</span></li>
-<li><a href="./papers/voxtral-tts.html">Voxtral TTS</a><span>arXiv 2603.25551</span></li></ul>
-          </section>
-        </aside>
       </main>
+      <p id="empty-state" class="empty-state" hidden>No papers match the current filter.</p>
+
+      <footer class="site-footer">
+        <div class="footer-section">
+          <h3>Archive</h3>
+          <ul><li><a href="./daily/2026-03-27.html">2026-03-27</a> <span class="meta">7 papers</span></li></ul>
+        </div>
+        <div class="footer-section">
+          <h3>All Notes</h3>
+          <ul><li><a href="./papers/fast-wam-do-world-action-models-need-test-time-future-imagination.html">Fast-WAM: Do World Action Models Need Test-time Future Imagination?</a> <span class="meta">arXiv 2603.16666</span></li>
+<li><a href="./papers/foundations-of-schr-dinger-bridges-for-generative-modeling.html">Foundations of Schrödinger Bridges for Generative Modeling</a> <span class="meta">arXiv 2603.18992</span></li>
+<li><a href="./papers/intern-s1-pro-scientific-multimodal-foundation-model-at-trillion-scale.html">Intern-S1-Pro: Scientific Multimodal Foundation Model at Trillion Scale</a> <span class="meta">arXiv 2603.25040</span></li>
+<li><a href="./papers/less-gaussians-texture-more-4k-feed-forward-textured-splatting.html">Less Gaussians, Texture More: 4K Feed-Forward Textured Splatting</a> <span class="meta">arXiv 2603.25745</span></li>
+<li><a href="./papers/macro-advancing-multi-reference-image-generation-with-structured-long-context-data.html">MACRO: Advancing Multi-Reference Image Generation with Structured Long-Context Data</a> <span class="meta">arXiv 2603.25319</span></li>
+<li><a href="./papers/msa-memory-sparse-attention-for-efficient-end-to-end-memory-model-scaling-to-100m-tokens.html">MSA: Memory Sparse Attention for Efficient End-to-End Memory Model Scaling to 100M Tokens</a> <span class="meta">arXiv 2603.23516</span></li>
+<li><a href="./papers/slopcodebench-benchmarking-how-coding-agents-degrade-over-long-horizon-iterative-tasks.html">SlopCodeBench: Benchmarking How Coding Agents Degrade Over Long-Horizon Iterative Tasks</a> <span class="meta">arXiv 2603.24755</span></li>
+<li><a href="./papers/vega-learning-to-drive-with-natural-language-instructions.html">Vega: Learning to Drive with Natural Language Instructions</a> <span class="meta">arXiv 2603.25741</span></li>
+<li><a href="./papers/voxtral-tts.html">Voxtral TTS</a> <span class="meta">arXiv 2603.25551</span></li></ul>
+        </div>
+      </footer>
     </div>
     
     <script src="./app.js"></script>

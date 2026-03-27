@@ -7,35 +7,25 @@
     <meta name="description" content="Software development is iterative, yet agentic coding benchmarks overwhelmingly evaluate single-shot solutions against complete specifications. Code can pass the test suite but bec">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
   </head>
   <body>
     
-    <div class="page-shell note-shell">
-      <nav class="top-nav">
-        <a href="../index.html">Home</a>
+    <div class="container">
+      <nav class="back-nav">
+        <a href="../index.html">&larr; Home</a>
       </nav>
-      <article class="note-page">
-        <div class="note-hero">
-          <div class="note-main">
-            <p class="eyebrow">Paper Note</p>
-            <h1>SlopCodeBench: Benchmarking How Coding Agents Degrade Over Long-Horizon Iterative Tasks</h1>
-            <div class="topic-row topic-row-large"><span class="topic-pill" data-tag="Dataset">Dataset</span><span class="topic-pill" data-tag="Agents">Agents</span></div>
-          </div>
-          <aside class="note-meta-rail">
-            <div class="meta-grid">
-              <div><span>arXiv</span><strong>2603.24755</strong></div>
-              <div><span>Source</span><strong><a href="https://www.arxiv.org/src/2603.24755">Open paper</a></strong></div>
-              <div><span>Local note</span><strong>knowledge/summary_slopcodebench_benchmarking_how_coding_agents_degrade_over_long_horizon_iterative_tasks.md</strong></div>
-            </div>
-          </aside>
-        </div>
-        <section class="content-block content-block-emphasis">
+      <article class="note">
+        <header>
+          <h1>SlopCodeBench: Benchmarking How Coding Agents Degrade Over Long-Horizon Iterative Tasks</h1>
+          <p class="paper-meta">arXiv 2603.24755 · Dataset · Agents · <a href="https://www.arxiv.org/src/2603.24755">Open paper</a></p>
+        </header>
+        <section>
           <h2>摘要总结</h2>
           <p>Software development is iterative, yet agentic coding benchmarks overwhelmingly evaluate single-shot solutions against complete specifications. Code can pass the test suite but become progressively harder to extend. Recent iterative benchmarks attempt to close this gap, but constrain the agent's design decisions too tightly to faithfully measure how code quality shapes future extensions.</p>
         </section>
-        <section class="content-block">
+        <section>
           <h2>核心 Insight</h2>
           <p>Across 11 models and 20 iterative problems, no agent solves a problem end-to-end. Verbosity rises in 90% of trajectories, erosion appears in 80%, and both trends diverge sharply from well-maintained human repositories over time. 这篇 benchmark 的价值在于把“能不能一次写对”换成了“能不能持续演化而不把代码库改坏”。</p>
         </section>

@@ -7,35 +7,25 @@
     <meta name="description" content="这篇论文报告了一个 1T 参数的科学多模态基础模型 `Intern-S1-Pro`。作者希望它既保留通用多模态模型的推理、图文理解和 agent 能力，又能在 chemistry、materials、life science、earth science 等科学任务上具备更深的专长。为了让 trillion-scale 训练可行，论文强调了 expert ex">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
   </head>
   <body>
     
-    <div class="page-shell note-shell">
-      <nav class="top-nav">
-        <a href="../index.html">Home</a>
+    <div class="container">
+      <nav class="back-nav">
+        <a href="../index.html">&larr; Home</a>
       </nav>
-      <article class="note-page">
-        <div class="note-hero">
-          <div class="note-main">
-            <p class="eyebrow">Paper Note</p>
-            <h1>Intern-S1-Pro: Scientific Multimodal Foundation Model at Trillion Scale</h1>
-            <div class="topic-row topic-row-large"><span class="topic-pill" data-tag="MoE">MoE</span><span class="topic-pill" data-tag="Multimodal">Multimodal</span><span class="topic-pill" data-tag="Agents">Agents</span></div>
-          </div>
-          <aside class="note-meta-rail">
-            <div class="meta-grid">
-              <div><span>arXiv</span><strong>2603.25040</strong></div>
-              <div><span>Source</span><strong><a href="https://www.arxiv.org/src/2603.25040">Open paper</a></strong></div>
-              <div><span>Local note</span><strong>knowledge/summary_intern_s1_pro_scientific_multimodal_foundation_model_at_trillion_scale.md</strong></div>
-            </div>
-          </aside>
-        </div>
-        <section class="content-block content-block-emphasis">
+      <article class="note">
+        <header>
+          <h1>Intern-S1-Pro: Scientific Multimodal Foundation Model at Trillion Scale</h1>
+          <p class="paper-meta">arXiv 2603.25040 · MoE · Multimodal · Agents · <a href="https://www.arxiv.org/src/2603.25040">Open paper</a></p>
+        </header>
+        <section>
           <h2>摘要总结</h2>
           <p>这篇论文报告了一个 1T 参数的科学多模态基础模型 <code>Intern-S1-Pro</code>。作者希望它既保留通用多模态模型的推理、图文理解和 agent 能力，又能在 chemistry、materials、life science、earth science 等科学任务上具备更深的专长。为了让 trillion-scale 训练可行，论文强调了 expert expansion、grouped routing 和高精度训练/推理一致性的基础设施设计。</p>
         </section>
-        <section class="content-block">
+        <section>
           <h2>核心 Insight</h2>
           <p>如果把这篇只看成“把模型做大”，会错过重点。它真正有意思的地方是试图把“通用基础模型”和“科学专用模型”融合成一个 <code>Specializable Generalist</code>，而支撑这件事的关键不是单纯加参数，而是更稳的 MoE 路由与扩专家策略，以及面向科学图像的专用 caption pipeline 和 6T token 续训数据。</p>
         </section>
